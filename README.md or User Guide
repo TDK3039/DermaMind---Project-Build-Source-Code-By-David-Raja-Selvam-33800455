@@ -73,7 +73,7 @@ root/
 
 # How to Run the Project
 ## Backend Setup (Node.js + MongoDB)
-1. Clone the repo
+1. Clone the repository
    git clone <your-repo-url>
 cd backend
 

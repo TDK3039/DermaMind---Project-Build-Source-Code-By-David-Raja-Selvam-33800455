@@ -89,7 +89,7 @@ cd backend
 Local mongod
 OR MongoDB Atlas connection string
 
-5. Run the backend (Ensure you are specifically in the src folder as that is where the server.js is located)
+5. Run the backend (Ensure you are specifically in the src folder)
    node server.js
 
 6. Test the server

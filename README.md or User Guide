@@ -71,7 +71,7 @@ root/
     ├── App.tsx
     └── package.json
 
-# How to Run the Project
+# How to Run the Project (Ensure that you open the backend folder (DermaMind 3) in one code window and then the frontend folder (DermaMindApp) in another code window. This will help keep the app error free and easy to navigate.
 ## Backend Setup (Node.js + MongoDB)
 1. Clone the repository
    git clone <your-repo-url>

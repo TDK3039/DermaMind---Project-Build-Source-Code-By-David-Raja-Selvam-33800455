@@ -1,0 +1,146 @@
+## DermaMind – Skin Analysis Prototype
+A university project demonstrating an end‑to‑end mobile and backend skin analysis system.
+
+## Overview
+DermaMind is a mobile prototype that allows users to capture or upload a skin photo, sends it to a Node.js backend for heuristic image analysis using Sharp, and returns an AI‑style assessment including:
+- Predicted skin condition
+- Confidence score
+- Severity level
+- Skin metrics (redness, texture, inflammation, brightness)
+- Basic skincare recommendations
+This is a university prototype, not a medical tool.
+
+## Core Features Implemented
+- Take a photo using device camera
+- Upload from gallery
+- Animated upload + progress bar
+- AI‑style results screen
+- Condition prediction
+- Confidence
+- Severity
+- Animated metric bars
+- Recommendations
+- Metadata
+- Scan history stored locally (AsyncStorage)
+- User authentication (signup/login)
+- Protected profile screen
+- Terms of Use & Privacy Notice
+- Clean, consistent UI with animations
+# Backend (Node.js + Express + MongoDB)
+- JWT authentication
+- Password hashing (bcrypt)
+- Image upload via Multer (memory storage)
+- Image analysis using Sharp statistics
+- Heuristic classification logic
+- Confidence + severity scoring
+- MongoDB user storage
+- Clean, modular routes
+
+## System Architecture
+React Native App
+   ├── Camera / Gallery
+   ├── Upload image → /api/analysis/upload
+   ├── Display results
+   └── Save history locally
+Node.js Backend
+   ├── /api/auth (register/login)
+   ├── /api/user/profile (protected)
+   └── /api/analysis/upload (image analysis)
+MongoDB
+   └── Stores user accounts
+
+## Folder Stucture
+root/
+│
+├── backend/
+│   ├── routes/
+│   │   ├── auth.js
+│   │   ├── user.js
+│   │   └── analysis.js
+│   ├── middleware/
+│   │   └── authMiddleware.js
+│   ├── models/
+│   │   └── User.js
+│   ├── server.js
+│   └── package.json
+│
+└── app/
+    ├── screens/
+    ├── components/
+    ├── navigation/
+    ├── App.tsx
+    └── package.json
+
+# How to Run the Project
+## Backend Setup (Node.js + MongoDB)
+1. Clone the repo
+   git clone <your-repo-url>
+cd backend
+
+2. Install dependencies
+   npm install
+
+3. Create .env file
+  MONGO_URI=mongodb://localhost:27017/dermamind
+  JWT_SECRET=your_secret_here
+  PORT=5001
+
+4. Start MongoDB
+Local mongod
+OR MongoDB Atlas connection string
+
+5. Run the backend (Ensure you are specifically in the src folder as that is where the server.js is located)
+   node server.js
+
+6. Test the server
+   http://localhost:5001/
+   You should see: { "message": "DermaMind API running" }
+
+## Mobile App Setup (React Native)
+Note: Running the mobile app requires a full React Native environment (Android Studio or Xcode).
+If unavailable, please refer to the demo video.
+
+1. Install dependencies
+   cd app
+   npm install
+
+2. Update backend IP address
+   In ScanScreen.tsx and UploadPhoto.tsx: "http://<your-local-ip>:5001/api/analysis/upload"
+
+3. Run the app
+   Android: npx react-native run-android
+   
+   iOS: npx pod-install ios
+   npx react-native run-ios
+
+## Test Credentials
+You can create a new account via the app, or use:
+  Email: test@example.com
+  Password: password123
+  If you want, you can seed this user in MongoDB.
+
+## Known Limitations
+- Not a medical tool — heuristic only
+- Analysis is not ML‑based — uses Sharp statistics
+- Scan history stored locally — no cloud sync
+- Backend IP must be updated manually
+- Requires full React Native environment to run
+- No password reset / email verification
+- Accessibility improvements:
+  - Dynamic Font Scaling: The app does not yet respond to system text‑size settings. Users who rely on larger text for readability cannot adjust the UI accordingly.
+  - Focus indicators: Buttons and interactive components do not provide visible focus states, which can affect users relying on keyboard navigation or switch‑control systems.
+  - Reduced Motion Mode: Animations and transitions are not currently disabled when the device requests reduced motion, which may affect users sensitive to motion.
+  - Improved Error Messaging: Form validation errors are displayed visually but are not announced to screen readers, and do not provide detailed guidance for correction.
+  - Voice Control Compatibility: The app is not yet optimised for Siri Voice Control or Android Voice Access, which require consistent naming and accessible roles for all UI elements.
+  - Screen Reader Support: Many interactive elements do not include accessibilityLabel or descriptive hints. VoiceOver (iOS) and TalkBack (Android) users may not receive enough context when navigating the interface.
+
+## Conclusion
+DermaMind demonstrates a complete end‑to‑end prototype for mobile skin analysis, combining a React Native frontend with a Node.js and MongoDB backend. 
+The system successfully guides users through capturing or uploading an image, processes it using heuristic analysis techniques, and returns an AI‑style assessment with condition predictions, confidence scoring, severity levels, and skincare recommendations. 
+Although the analysis is not medically validated and does not use machine learning, the prototype effectively showcases the core workflow of an image‑driven diagnostic app.
+
+The project also implements essential features such as authentication, protected routes, local scan history, and a clean, consistent UI. 
+At the same time, several areas remain open for future development, including accessibility enhancements, cloud storage, real machine‑learning integration, and a more advanced authentication lifecycle. 
+These limitations are expected in a university prototype and provide clear opportunities for further refinement.
+
+Overall, DermaMind achieves its goal as a functional, well‑structured demonstration of how a mobile app and backend service can work together to deliver a smooth, user‑centred skin analysis experience.
